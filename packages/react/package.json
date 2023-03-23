@@ -1,0 +1,15 @@
+{
+	"name": "react",
+	"version": "1.0.0",
+	"description": "与宿主无关的功用方法",
+	"module": "index.ts",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"shared": "wordSpace:*"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
+}

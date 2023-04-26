@@ -65,4 +65,31 @@ export const jsx = (type: ElementType, config: any, ...maybeChildren: any) => {
 	return ReactElement(type, key, ref, props);
 };
 
-export const jsxDEV = jsx;
+/** jsxDEV 函数用在本地运行项目时，对比jsx函数不需要额外处理maybeChildren */
+export const jsxDEV = (type: ElementType, config: any) => {
+	const props: Props = {};
+	let key: Key = null;
+	let ref: Ref = null;
+
+	for (const prop in config) {
+		const val = config[prop];
+		if (prop === 'key') {
+			if (val !== 'undefined') {
+				key = '' + val;
+			}
+			continue;
+		}
+		if (prop === 'ref') {
+			if (val !== 'undefined') {
+				ref = '' + val;
+			}
+			continue;
+		}
+
+		if ({}.hasOwnProperty.call(config, prop)) {
+			props[prop] = val;
+		}
+	}
+
+	return ReactElement(type, key, ref, props);
+};
